@@ -6,7 +6,7 @@ use twilight_model::{
         command::{Command, CommandType},
         interaction::InteractionContextType,
     },
-    channel::message::Embed,
+    channel::message::{embed::EmbedField, Embed},
     http::interaction::{InteractionResponse, InteractionResponseData, InteractionResponseType},
     id::{marker::ApplicationMarker, Id},
     oauth::ApplicationIntegrationType,
@@ -26,9 +26,13 @@ pub async fn handle(
     )?;
     let embed = Embed {
         title: Some("about me!".to_string()),
-        description: Some("i'm a Discord bot named **R. Yui**. i was developed by **reinacchi** for no absolute reason.".to_string()),
+        description: Some("i'm a discord bot named **R. Yui**. i was developed by **reinacchi** for no absolute reason.".to_string()),
         color: Some(0xc8f4f4),
-        fields: Vec::new(),
+        fields: vec![EmbedField {
+            name: "github repository".to_string(),
+            value: "i happily am an open-source project. you can find my **github** [here](https://github.com/reinacchi/R.Yui). i'm written in [rust](https://rust-lang.org) using the [twilight](https://github.com/twilight-rs/twilight) discord library.".to_string(),
+            inline: false,
+        }],
         author: None,
         footer: None,
         image: None,
