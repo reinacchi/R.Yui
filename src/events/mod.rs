@@ -13,7 +13,7 @@ pub async fn handle_event(
 ) -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
     match event {
         Event::InteractionCreate(interaction) => {
-            interaction::handle_interaction(*interaction, http, application_id).await
+            interaction::handle_interaction_create(*interaction, http, application_id).await
         }
         Event::Ready(ready) => ready::handle_ready(*ready).await,
         _ => Ok(()),

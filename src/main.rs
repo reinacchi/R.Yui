@@ -5,7 +5,6 @@ mod commands;
 mod events;
 mod shard;
 
-use crate::events::handle_event;
 use std::{env, error::Error, sync::Arc};
 use twilight_gateway::{Event, EventTypeFlags, Shard, ShardId, StreamExt};
 use twilight_http::Client as HttpClient;
@@ -34,7 +33,7 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync + 'static>> {
             continue;
         };
 
-        tokio::spawn(handle_event(event, Arc::clone(&http), application_id));
+        tokio::spawn(events::handle_event(event, Arc::clone(&http), application_id));
     }
 
     Ok(())

@@ -8,7 +8,7 @@ use twilight_model::{
 };
 use crate::commands;
 
-pub async fn handle_interaction(
+pub async fn handle_interaction_create(
     interaction: InteractionCreate,
     http: Arc<HttpClient>,
     application_id: Id<ApplicationMarker>,
